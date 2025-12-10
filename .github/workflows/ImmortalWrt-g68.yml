@@ -8,7 +8,7 @@ on:
 env:
   REPO_URL: https://github.com/zhoufuli/immortalwrt-rk356x
   REPO_BRANCH: main
-  CONFIG_FILE: configs/g68_mtk_wifi.config
+  CONFIG_FILE: configs/g68.config
   DIY_SCRIPT: diy-mini.sh
   CLASH_KERNEL: arm64
   CACHE_TOOLCHAIN: true
@@ -100,6 +100,13 @@ jobs:
         echo "COMMIT_HASH=$COMMIT_HASH" >> $GITHUB_ENV
         echo "COMMIT_HASH=$COMMIT_HASH" >> $GITHUB_OUTPUT
 
+    - name: Install Feeds
+      run: |
+        df -hT
+        cd $OPENWRT_PATH
+        ./scripts/feeds update -a
+        ./scripts/feeds install -a
+
     - name: Generate Variables
       id: variable
       run: |
@@ -123,13 +130,6 @@ jobs:
         ccache: false
         mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}
         prefix: ${{ env.OPENWRT_PATH }}
-
-    - name: Install Feeds
-      run: |
-        df -hT
-        cd $OPENWRT_PATH
-        ./scripts/feeds update -a
-        ./scripts/feeds install -a
 
     - name: Load Custom Configuration
       run: |
