@@ -21,7 +21,7 @@
 - 固件集成的所有 ipk 插件全部打包在 Packages 文件中，可以在 [Releases](https://github.com/xiaomeng9597/ImmortalWrt-NSY/releases) 内进行下载
 - 项目编译的固件插件为最新版本，最新版插件可能有 BUG，如果之前使用稳定则无需追新
 - 第一次使用请采用全新安装，避免出现升级失败以及其他一些可能的 BUG
-- immortalwrt固件机型说明：“nsy-g68-plus” 使用的是闭源WiFi驱动，“nsy-g16-plus” 和 “bdy-g18-pro” 则使用的是开源的WiFi驱动
+- immortalwrt固件机型说明：“nsy-g68-plus” 使用的是闭源WiFi驱动，“nsy-g16-plus” 和 “bdy-g18-pro” 则使用的是开源WiFi驱动
 
 
 ## 固件特色 [![](https://img.shields.io/badge/-本项目固件特色-FFFFFF.svg)](#固件特色-)
