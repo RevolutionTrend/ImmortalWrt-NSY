@@ -1,9 +1,14 @@
 name: Delete Old Workflows
 
+permissions:
+  contents: write
+  packages: write
+  actions: read
+
 on:
   workflow_dispatch:
-  schedule:
-    - cron: 0 3 * * *
+  #schedule:
+  #  - cron: 0 3 * * *
 
 jobs:
   Cleaning:
@@ -13,7 +18,7 @@ jobs:
     - name: Delete Old Workflows
       uses: Mattraks/delete-workflow-runs@main
       with:
-        token: ${{ secrets.ACCESS_TOKEN }}
+        token: ${{ secrets.GITHUB_TOKEN }}
         retain_days: 20
         keep_minimum_runs: 15
 
@@ -23,4 +28,4 @@ jobs:
         keep_latest: 180
         delete_tags: true
       env:
-        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

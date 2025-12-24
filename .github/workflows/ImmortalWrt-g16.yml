@@ -1,9 +1,14 @@
 name: ImmortalWrt-g16
 
+permissions:
+  contents: write
+  packages: write
+  actions: read
+
 on:
   workflow_dispatch:
-  schedule:
-    - cron: 0 20 * * *
+  #schedule:
+  #  - cron: 0 20 * * *
 
 env:
   REPO_URL: https://github.com/zhoufuli/immortalwrt-rk356x
@@ -16,7 +21,7 @@ env:
   FIRMWARE_RELEASE: true
   FIRMWARE_TAG: immortalwrt-g16
   TZ: Asia/Shanghai
-  GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   Build:
